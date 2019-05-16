@@ -8,4 +8,4 @@ const print = () => {
     console.log(content)
 }
 
-print()
+// print()
