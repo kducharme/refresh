@@ -12,13 +12,14 @@ body {
 
 button {
     height: 42px;
-    width: 110px;
+    width: 120px;
     font-size: 14px;
     font-weight: 600;
     background-color: #f0452d;
     color: white;
     border-radius: 4px;
     border: none;
+    margin-top: 12px;
 }
 
 input {
@@ -49,7 +50,7 @@ input {
 
 .modal {
     width: 40vw;
-    height: 320px;
+    height: 200px;
     background: white;
     margin-top: 60px;
     display: flex;

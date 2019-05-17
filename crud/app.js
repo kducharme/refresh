@@ -22,6 +22,21 @@ const buildModal = (modal) => {
         input.setAttribute('id', inputs[i])
         modal.appendChild(input)
     }
+    const createNew = document.createElement('button');
+    createNew.textContent = 'Save task'
+    createNew.addEventListener('click', () => {
+        const task = {
+            title: document.querySelector('#Title').value,
+            description: document.querySelector('#Description').value,
+            tag: document.querySelector('#Tags').value
+        }
+        createTask(task)
+    })
+    modal.appendChild(createNew)
+}
+
+const createTask = (task) => {
+    console.log(task)
 }
 
 
