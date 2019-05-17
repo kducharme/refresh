@@ -31,12 +31,20 @@ const buildModal = (modal) => {
             tag: document.querySelector('#Tags').value
         }
         createTask(task)
+        clearFields(inputs)
     })
     modal.appendChild(createNew)
 }
 
+const clearFields = (inputs) => {
+    for (let i = 0; i < inputs.length; i++) {
+        const he = document.querySelector(`#${inputs[i]}`).value = ''
+    }
+}
+
+
 const createTask = (task) => {
-    console.log(task)
+
 }
 
 
