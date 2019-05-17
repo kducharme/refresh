@@ -1,7 +1,8 @@
+const allTasks = [];
+const printArea = document.querySelector('#content')
+
 
 const showModal = () => {
-    const printArea = document.querySelector('#content')
-
     const bg = document.createElement('div')
     bg.classList.add('bg')
 
@@ -11,10 +12,10 @@ const showModal = () => {
     bg.appendChild(modal)
     printArea.appendChild(bg)
 
-    buildModal(modal)
+    addInputs(modal)
 }
 
-const buildModal = (modal) => {
+const addInputs = (modal) => {
     const inputs = ['Title','Description','Tags'];
     for (let i = 0; i < inputs.length; i++){
         const input = document.createElement('input')
@@ -24,28 +25,31 @@ const buildModal = (modal) => {
     }
     const createNew = document.createElement('button');
     createNew.textContent = 'Save task'
-    createNew.addEventListener('click', () => {
-        const task = {
-            title: document.querySelector('#Title').value,
-            description: document.querySelector('#Description').value,
-            tag: document.querySelector('#Tags').value
-        }
-        createTask(task)
-        clearFields(inputs)
-    })
+    createNew.addEventListener('click', createTask)
     modal.appendChild(createNew)
 }
 
-const clearFields = (inputs) => {
-    for (let i = 0; i < inputs.length; i++) {
-        const he = document.querySelector(`#${inputs[i]}`).value = ''
+const createTask = () => {
+    const task = {
+        title: document.querySelector('#Title').value,
+        description: document.querySelector('#Description').value,
+        tag: document.querySelector('#Tags').value
     }
+    closeModal();
+    printTask(task);
+    allTasks.push(task);
+}
+
+const printTask = (task) => {
+    const structure = document.createElement('div');
+    
+}
+
+const closeModal = () => {
+    document.querySelector('#content').removeChild(document.querySelector('.bg'))
 }
 
 
-const createTask = (task) => {
-
-}
 
 
 document.querySelector('.addTask').addEventListener('click', showModal)
