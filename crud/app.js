@@ -42,7 +42,13 @@ const createTask = () => {
 
 const printTask = (task) => {
     const structure = document.createElement('div');
-    
+    structure.classList.add('task')
+    for (let i in task) {
+        const data = document.createElement('p')
+        data.textContent = task[i]
+        structure.appendChild(data)
+    }
+    printArea.appendChild(structure)
 }
 
 const closeModal = () => {
