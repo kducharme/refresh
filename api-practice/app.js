@@ -1,47 +1,48 @@
 // Gets todo data
-const getTodos = () => {
-    fetch('https://jsonplaceholder.typicode.com/todos/')
+const getPosts = () => {
+    fetch('https://jsonplaceholder.typicode.com/posts/')
         .then(response => response.json())
-        .then(todos => getUserData(todos))
+        .then(posts => getUserData(posts))
 }
 
 // Gets full user data
-const getUserData = (todos) => {
-    todos.forEach((todo) => {
+const getUserData = (posts) => {
+    posts.forEach((post) => {
         const structure = document.createElement('div');
-        fetch(`https://jsonplaceholder.typicode.com/users/${todo.userId}`)
+        fetch(`https://jsonplaceholder.typicode.com/users/${post.userId}`)
             .then(response => response.json())
             .then(user => {
-                todo.user = user;
-                generateTodoContent(todo)
+                post.user = user;
+                generateTodoContent(post)
+                console.log(post)
             })
     })
 }
 
 // Generates printable todo
 const generateTodoContent = (data) => {
-    const todo = document.createElement('div');
-    let todoTitle = createParagraph(data.title),
-        todoStatus = createParagraph(data.completed),
-        todoUserName = createParagraph(data.user.name),
-        todoUserEmail = createParagraph(data.user.email);
-    todo.appendChild(todoTitle);
-    todo.appendChild(todoStatus);
-    todo.appendChild(todoUserName);
-    todo.appendChild(todoUserEmail);
-    printTodo(todo)
+    const post = document.createElement('div');
+    let postTitle = createParagraph(data.title),
+        postBody = createParagraph(data.body),
+        postUserName = createParagraph(data.user.name),
+        postUserEmail = createParagraph(data.user.email);
+    post.appendChild(postTitle);
+    post.appendChild(postBody);
+    post.appendChild(postUserName);
+    post.appendChild(postUserEmail);
+    printPost(post)
 }
 
-const createParagraph = (todoData) => {
+const createParagraph = (postData) => {
     const p = document.createElement('p');
-    p.textContent = todoData;
+    p.textContent = postData;
     return p;
 }
 
 
 // Prints todo to DOM
-const printTodo = (todo) => {
+const printPost = (post) => {
     const printArea = document.querySelector('#content');
-    printArea.appendChild(todo)
+    printArea.appendChild(post)
 }
-getTodos();
+getPosts();
