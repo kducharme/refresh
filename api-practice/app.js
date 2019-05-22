@@ -14,7 +14,6 @@ const getUserData = (posts) => {
             .then(user => {
                 post.user = user;
                 generateTodoContent(post)
-                console.log(post)
             })
     })
 }
@@ -38,7 +37,6 @@ const createParagraph = (postData) => {
     p.textContent = postData;
     return p;
 }
-
 
 // Prints todo to DOM
 const printPost = (post) => {
